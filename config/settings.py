@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # installed extra apps
+    'bootstrap5'
 
     # internal apps
 ]
