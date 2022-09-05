@@ -1,0 +1,31 @@
+{% extends '../base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <div class="container my-3 text-center">
+        <a class="text-dark" href="{% url 'blog:main' %}">
+            <svg width="48px" height="48px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9.879 5.636.707-.707a6 6 0 0 1 8.485 8.485l-2.121 2.122M7.757 7.757 5.636 9.88M3.515 12l-.707.707m12.02 4.95-1.414 1.414m-.707-4.95-.707.707M9.879 16.95l-2.122 2.12m2.122-7.778-6.364 6.364"/><circle cx="14.828" cy="9.172" r="2" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="rotate(45 14.828 9.172)"/></svg>
+        </a>
+        <main class="form-signin my-3">
+            <h1 class="h3 pb-2 fw-normal">Sign up</h1>
+            <form method="post" action="{% url 'account:signup' %}">
+                {% csrf_token %}
+                
+                {% include "form_errors.html" %}
+                <div class="form-floating">
+                    <input type="text" name="{{ form.username.name }}" class="form-control" id="floatingInput" placeholder="Username" maxlength="16">
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="{{ form.password1.name }}" class="form-control" id="floatingPassword" placeholder="Password" maxlength="32">
+                    <label for="floatingInput">Password</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="{{ form.password2.name }}" class="form-control" id="floatingPassword" placeholder="Password" maxlength="32">
+                    <label for="floatingInput">Password Confirm</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign up</button>
+            </form>
+        </main>        
+    </div>
+{% endblock%}
