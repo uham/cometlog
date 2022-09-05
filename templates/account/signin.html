@@ -1,0 +1,29 @@
+{% extends '../base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+    {% include '../header.html' %}
+    <div class="container my-3 text-center">
+        <main class="form-signin">
+            <form method="post" action="{% url 'account:signin' %}">
+                {% csrf_token %}
+                <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+                {% include "form_errors.html" %}
+                <div class="form-floating">
+                    <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username" maxlength="16">
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="32">
+                    <label for="floatingInput">Password</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign in</button>
+            </form>
+        </main>
+    </div>
+{% endblock%}
