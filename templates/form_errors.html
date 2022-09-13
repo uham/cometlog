@@ -10,4 +10,10 @@
 {% endfor %}
 {% endif %}
 {% endfor %}
+{% for error in form.non_field_errors %}
+<div class="alert alert-dark d-flex justify-content-between">
+    {{ error }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
 {% endif %}

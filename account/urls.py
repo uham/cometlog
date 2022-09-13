@@ -8,4 +8,5 @@ app_name = 'account'
 urlpatterns = [
     path('signin/', auth_views.LoginView.as_view(template_name='account/signin.html'), name='signin'),
     path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('signout', auth_views.LogoutView.as_view(), name='signout'),
 ]

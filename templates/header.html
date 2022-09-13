@@ -8,7 +8,11 @@
                 <a class="header-blog-logo text-dark" href="{% url 'blog:main' %}">Cometlog</a>
             </div>
             <div class="col-3 d-flex justify-content-end align-items-center">
+                {% if user.is_anonymous %}
                 <a class="btn btn-sm btn-outline-secondary" href="{% url 'account:signin' %}">Sign in</a>
+                {% else %}
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'account:signout' %}">Sign out</a>
+                {% endif %}
             </div>
         </div>
     </header>
