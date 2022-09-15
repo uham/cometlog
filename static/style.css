@@ -16,6 +16,30 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto Slab", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
 }
 
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav-link {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: .875rem;
+}  
+
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -40,8 +64,12 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-signin input[type="password"][id="floatingPassword"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.form-signin input[type="password"][id="floatingPasswordConfirm"] {
+    margin-bottom: 10px;
 }
