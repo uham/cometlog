@@ -18,7 +18,7 @@ class Category(MPTTModel):
 class Post(models.Model):
     subject = models.CharField(max_length=128, unique=True)
     content = models.TextField()
-    category = models.ForeignKey(
+    category = TreeForeignKey(
         Category,
         related_name='posts',
         on_delete=models.CASCADE
