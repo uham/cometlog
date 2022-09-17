@@ -1,3 +1,5 @@
 <div class="container">
-    abcd
+    {% if user.is_staff %}
+    <a class="btn btn-sm btn-outline-secondary" href="{% url 'blog:write' %}">Write</a>
+    {% endif %}
 </div>

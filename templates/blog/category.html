@@ -3,5 +3,14 @@
 
 {% block content %}
     {% include 'header.html' %}
+    {% if ctgr_tree %}
+    <div class='container mb-2'>
+        <a class="small link-secondary" href={% url 'blog:main' %}>Blog</a>
+        {% for ctgr in ctgr_tree %}
+        <span class="small text-secondary">></span>
+        <a class="small link-secondary" href={% url 'blog:category' category_name=ctgr %}>{{ ctgr }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
     {% include 'blog/post_list.html' %}
 {% endblock%}
