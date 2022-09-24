@@ -4,8 +4,9 @@
 }
 
 .header-blog-logo {
-    font-family: "Roboto Slab", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 2.25rem;
+    font-weight: bold;
 }
 
 .header-blog-logo:hover {
@@ -13,7 +14,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto Slab", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .nav-scroller {
@@ -73,3 +74,17 @@ h1, h2, h3, h4, h5, h6 {
 .form-signin input[type="password"][id="floatingPasswordConfirm"] {
     margin-bottom: 10px;
 }
+
+.category-link {
+    z-index:3;
+    position:relative;
+    width:fit-content;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
