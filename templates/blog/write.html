@@ -4,6 +4,11 @@
 {% block content %}
     {% include 'header.html' %}
     <div class="container">
-        Write
+        <form method="post" action="{% url 'blog:write' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            {{ form }}
+            <button class="btn btn-outline-secondary" type="submit">Submit</button>
+        </form>
     </div>
 {% endblock%}

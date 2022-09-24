@@ -13,4 +13,9 @@
     </div>
     {% endif %}
     {% include 'blog/post_list.html' %}
+    {% if user.is_staff %}
+    <div class='container'> 
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'blog:write' %}">Write</a>
+    </div>
+    {% endif %}
 {% endblock%}

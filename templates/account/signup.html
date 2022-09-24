@@ -10,7 +10,6 @@
             <h1 class="h3 pb-2 fw-normal">Sign up</h1>
             <form method="post" action="{% url 'account:signup' %}">
                 {% csrf_token %}
-                
                 {% include "form_errors.html" %}
                 <div class="form-floating">
                     <input type="text" name="{{ form.username.name }}" class="form-control" id="floatingInput" placeholder="Username" maxlength="16">
