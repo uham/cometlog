@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Category
+from blog.models import Category, Post
 
 # Create your views here.
 def main(request):
@@ -27,3 +27,20 @@ def category(request, category_name):
     }
     
     return render(request, 'blog/category.html', context)
+
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    ctgr_tree = [post.category]
+    parent = post.category.parent
+    while parent:
+        ctgr_tree.append(parent.subject)
+        parent = parent.parent
+    ctgr_tree.reverse()
+
+    context = {
+        'post':post,
+        'ctgr_tree':ctgr_tree,
+    }
+
+    return render(request, 'blog/post_detail.html', context)

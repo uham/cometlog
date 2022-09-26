@@ -12,10 +12,8 @@
         {% endfor %}
     </div>
     {% endif %}
-    {% include 'blog/blog_extra/post_list.html' %}
-    {% if user.is_staff %}
-    <div class='container'> 
-        <a class="btn btn-sm btn-outline-secondary" href="{% url 'blog:write' %}">Post Write</a>
+    <div class='container mb-2'>
+        <h1 class="mb-1" style="font-weight: bold;">{{ post.subject }}</h1>
+        <div class="mb-1 text-muted">{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</div>
     </div>
-    {% endif %}
 {% endblock%}

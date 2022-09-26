@@ -87,4 +87,18 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-  }
+}
+
+.card-text {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1; 
+   -webkit-box-orient: vertical;
+}
+
+.h-200 { height: 200px; }
+@media (min-width: 768px) {
+  .h-md-200 { height: 200px; }
+}

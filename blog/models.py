@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.text import slugify
@@ -34,6 +35,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.subject
+
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', kwargs={"slug":self.slug})
 
     def save(self, *args, **kwargs):  # new
         if not self.slug:
