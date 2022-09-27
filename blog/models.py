@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(MPTTModel):
@@ -43,3 +44,13 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.subject, allow_unicode=True)
         return super().save(*args, **kwargs)
+
+class Comment(models.model):
+    content = models.TextField()
+    writer = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.content
