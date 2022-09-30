@@ -45,7 +45,7 @@ class Post(models.Model):
             self.slug = slugify(self.subject, allow_unicode=True)
         return super().save(*args, **kwargs)
 
-class Comment(models.model):
+class Comment(models.Model):
     content = models.TextField()
     writer = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
