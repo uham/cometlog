@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
+{% load blog_filter %}
 
 {% block content %}
     {% include 'header.html' %}
@@ -13,7 +14,10 @@
     </div>
     {% endif %}
     <div class='container mb-2'>
-        <h1 class="mb-1" style="font-weight: bold;">{{ post.subject }}</h1>
-        <div class="mb-1 text-muted">{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</div>
+        <div class="post-header">
+            <h1 class="mb-1" style="font-weight: bold;">{{ post.subject }}</h1>
+            <div class="mb-2 text-muted">{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</div>
+        </div>
+        <div class="mb-1">{{ post.content|mark }}</div>
     </div>
 {% endblock%}

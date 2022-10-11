@@ -7,7 +7,7 @@
             </div>
             <h4 class="card-text mb-0">{{ post.subject }}</h4>
             <div class="mb-1 text-muted">{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</div>
-            <p class="card-text mb-auto">{{ post.content }}</p>
+            <p class="card-text mb-auto">{{ post.get_pure_content }}</p>
             <a href="{{ post.get_absolute_url }}" class="stretched-link link-dark">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block">

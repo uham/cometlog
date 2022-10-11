@@ -3,4 +3,4 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='account:signin')
 def comment_add(request):
-    
+    pass

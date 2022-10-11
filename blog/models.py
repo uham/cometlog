@@ -4,6 +4,8 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 
+import re
+
 # Create your models here.
 class Category(MPTTModel):
     subject = models.CharField(max_length=128, unique=True)
@@ -40,12 +42,15 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post_detail', kwargs={"slug":self.slug})
 
+    def get_pure_content(self):
+        return re.sub(r"[^\uAC00-\uD7A30-9a-zA-Z\s\(\)\-\.\?\{\}]", "", self.content)
+
     def save(self, *args, **kwargs):  # new
         if not self.slug:
             self.slug = slugify(self.subject, allow_unicode=True)
         return super().save(*args, **kwargs)
 
-class Comment(models.model):
+class Comment(models.Model):
     content = models.TextField()
     writer = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
