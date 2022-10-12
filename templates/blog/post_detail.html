@@ -14,10 +14,49 @@
     </div>
     {% endif %}
     <div class='container mb-2'>
-        <div class="post-header">
-            <h1 class="mb-1" style="font-weight: bold;">{{ post.subject }}</h1>
-            <div class="mb-2 text-muted">{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</div>
+        <div class='post-content mb-2'>
+            <div class='mb-1'>
+                <div class="post-header">
+                    <h3 class="mb-1" style="font-weight: bold;">{{ post.subject }}</h3>
+                    <div class="mb-2 text-muted">{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}{% if post.updated_at != post.created_at %} | {{ post.updated_at|date:"SHORT_DATETIME_FORMAT" }}{% endif %}</div>
+                </div>
+                <div class="mb-1">{{ post.content|mark }}</div>
+            </div>
+            <div class='row mb-1'>
+                <div class='col'>
+                    {% if ctgr_tree %}
+                    <a class="small link-secondary" href={% url 'blog:main' %}>Blog</a>
+                    {% for ctgr in ctgr_tree %}
+                    <span class="small text-secondary">></span>
+                    <a class="small link-secondary" href={% url 'blog:category' category_name=ctgr %}>{{ ctgr }}</a>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class='col-auto'>
+                    {% if user.is_staff %}
+                    <a class="btn btn-sm btn-outline-secondary" href="#">M</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="#">D</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <div class="mb-1">{{ post.content|mark }}</div>
+        <div class="mb-1">
+            {% if user.is_anonymous %}
+            {% else %}
+            <form method="post" action="{% url 'blog:comment' %}">
+                {% csrf_token %}
+                <input type="hidden" name="slug" value="{{ post.slug }}">
+                <div class="form-comment row mb-1">
+                    <div class="col pe-1"><textarea name="comment-content" placeholder="Comment"></textarea></div>
+                    <div class="col-auto ps-0"><button class="btn btn-outline-secondary" type="submit">Send</button></div>
+                </div>
+            </form>
+            {% endif %}
+            {% if comments %}
+            {% for comment in comments %}
+            {{ comment.writer }} {{ comment.created_at|date:"SHORT_DATETIME_FORMAT"}} {{ comment.content }}
+            {% endfor %}
+            {% endif %}
+        </div>
     </div>
 {% endblock%}

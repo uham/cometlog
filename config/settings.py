@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # installed extra apps
     'bootstrap5',
     'mptt',
-
+    
     # internal apps
     'blog.apps.BlogConfig',
     'account.apps.AccountConfig',

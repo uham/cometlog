@@ -23,7 +23,7 @@ def category(request, category_name):
         'category':category,
         'categories':category.children.all(),
         'ctgr_tree':ctgr_tree,
-        'posts':category.posts.all(),
+        'posts':category.posts.all().order_by('-created_at'),
     }
     
     return render(request, 'blog/category.html', context)
@@ -41,6 +41,7 @@ def post_detail(request, slug):
     context = {
         'post':post,
         'ctgr_tree':ctgr_tree,
+        'comments':post.comments.all(),
     }
 
     return render(request, 'blog/post_detail.html', context)

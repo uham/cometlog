@@ -7,7 +7,12 @@
         <form method="post" action="{% url 'blog:write' %}">
             {% csrf_token %}
             {% include "form_errors.html" %}
-            {{ form }}
+            <div class='mb-1 w-100'>Subject</div>
+            <div class='mb-1 w-100'>{{ form.subject }}</div>
+            <div class='mb-1 w-100'>Content</div>
+            <div class='mb-1 w-100'>{{ form.content }}</div>
+            <div class='mb-1 w-100'>Category</div>
+            <div class='mb-1 w-100'>{{ form.category }}</div>
             <button class="btn btn-outline-secondary" type="submit">Submit</button>
         </form>
     </div>

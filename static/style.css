@@ -75,6 +75,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
 }
 
+.form-comment button {
+    height: 100%;
+}
+
+.form-comment textarea {
+    height: 100%;
+    resize: none;
+}
+
 .category-link {
     z-index:3;
     position:relative;
@@ -105,4 +114,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .post-header {
     text-align: center;
+}
+
+.post-content {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+input {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
 }

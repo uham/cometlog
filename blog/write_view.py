@@ -3,7 +3,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from blog.forms import PostWriteForm
-from blog.models import Post
 
 @method_decorator(staff_member_required(login_url='account:signin'), name='dispatch')
 class WriteView(FormView):
